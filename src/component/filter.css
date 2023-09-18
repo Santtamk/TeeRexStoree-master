@@ -1,0 +1,21 @@
+.filterClass {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-top: 2rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (min-width:768px) {
+    .filter__button{
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    .categories{
+        display: none;
+    }
+}

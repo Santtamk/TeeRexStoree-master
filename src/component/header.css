@@ -1,0 +1,35 @@
+
+.header{
+    background-color: #1a1a1d;
+    color: white;
+}
+.header div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-header button{
+    padding-left: 6rem;
+}
+.navbar-right button {
+    padding-right: 6rem;
+}
+
+@media (max-width:750px) {
+    .navbar-header button{
+        padding-left: 2rem;
+    }
+    .navbar-right button {
+        padding-right: 2rem;
+    } 
+}
+
+@media (max-width:900px) {
+    .navbar-header button{
+        padding-left: 4rem;
+    }
+    .navbar-right button {
+        padding-right: 4rem;
+    } 
+}

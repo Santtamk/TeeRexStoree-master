@@ -1,0 +1,13 @@
+.search {
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        margin-top: 1rem;
+}
+
+.products-and-categories {
+        display: flex;
+        flex-wrap: wrap;
+}
+
+.product-filter {
+        flex: 1;
+}
