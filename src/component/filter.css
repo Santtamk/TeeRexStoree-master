@@ -8,6 +8,10 @@
     flex-wrap: wrap;
 }
 
+.filter__button{
+  
+}
+
 @media (min-width:768px) {
     .filter__button{
         display: none;
@@ -18,4 +22,9 @@
     .categories{
         display: none;
     }
+    .mobile-filter-content{
+        padding-right: 1rem;
+        padding-top: 1rem;
+    }
+    
 }

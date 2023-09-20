@@ -33,3 +33,20 @@
         padding-right: 4rem;
     } 
 }
+@media (max-width:300px) {
+    .navbar-header button{
+        padding-left: 0;
+    }
+    .navbar-right button {
+        padding-right: 0;
+    } 
+}
+
+@media (max-width:500px) {
+    .navbar-header button{
+        padding-left: 0;
+    }
+    .navbar-right button {
+        padding-right: 0;
+    } 
+}

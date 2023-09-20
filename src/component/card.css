@@ -1,3 +1,9 @@
 .cardButton{
     padding-left: 10px;
 }
+
+.card-all-image {
+    width: 100%; /* Set the desired width */
+  height: 29vh; /* Set the desired height */
+  object-fit: cover;
+}

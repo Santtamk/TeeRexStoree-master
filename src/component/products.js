@@ -8,7 +8,7 @@ import Filter from "./filter";
 import './Products.css';
 
 const Products = ({ handleClick }) => {
-  const [isOpen, setIsOpen] = useState(false);
+
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterOptions, setFilterOptions] = useState({
@@ -96,7 +96,7 @@ const Products = ({ handleClick }) => {
             <Filter onFilterChange={handleFilterChange} />
           </div>
 
-          <div className="row m-4"  >
+          <div className="row m-4 d-flex flex-wrap"  >
             {filteredProducts.map((product) => (
               <div key={product.id} className="col m-2">
                 <Card product={product} handleClick={handleClick} />

@@ -8,7 +8,7 @@ import './card.css'
     return(
 
             <div className="card rounded shadow border-0 " style={{width: '15rem'}}>
-                <img className="img-thumbnail" src={product.imageURL} alt={product.name}/>
+                <img className="img-thumbnail card-all-image" src={product.imageURL} alt={product.name}/>
                 <div className="card-body">
                     <div>
                         <h5 className="card-title">{product.name}</h5>

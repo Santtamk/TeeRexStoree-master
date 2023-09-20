@@ -5,9 +5,19 @@
 
 .products-and-categories {
         display: flex;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
 }
 
-.product-filter {
-        flex: 1;
-}
+
+@media (max-width:768px) {
+        .products-and-categories{
+                flex-direction: column;
+                justify-content: center;       
+        }
+
+        .product-filter {
+                display: block;
+                padding-left: 0.5rem;
+                padding-top: 2rem;
+        }
+    }

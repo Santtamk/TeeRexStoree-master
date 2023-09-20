@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./filter.css";
+import { Alert, Snackbar } from "@mui/material";
 
 
 export default function Filter({ onFilterChange }) {
@@ -8,7 +9,8 @@ export default function Filter({ onFilterChange }) {
   const [priceRange, setPriceRange] = useState(null);
   const [type, setType] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
+  
 
 
   const toggleFilter = () => {
@@ -56,7 +58,7 @@ export default function Filter({ onFilterChange }) {
     },
     {
       name: "Type",
-      options: ["Polo", "Hoodie", "Round"],
+      options: ["Polo", "Hoodie", "Basic"],
       state: [type, setType],
     },
   ];
@@ -75,78 +77,35 @@ export default function Filter({ onFilterChange }) {
     setColor('');
     setPriceRange('');
     setType('');
-    // handleFilterChange();
   };
 
+  //snackbarmUI
+
+  const [applySnackbarOpen, setApplySnackbarOpen] = useState(false);
+  const [clearSnackbarOpen, setClearSnackbarOpen] = useState(false);
+  
+    const handleClickApply = () => {
+      setApplySnackbarOpen(true);
+      handleFilterChange()
+    };
+  
+    const handleClickClear  = () => {
+       handleClearFilter();
+      handleFilterChange();
+      setClearSnackbarOpen(true);
+    };
+  
+
   return (
-//     <>
-//       {isMobile && isOpen && (       
-//     <div className={`d-flex-col border  rounded-1 bg-light p-4 filterClass `}>
-//       <h4 className="px-4">Categories</h4>
-      
-//       <div className="filter-options">
-//       {categories.map((category) => (
-//         <div key={category.name} className="m-2 d-flex-col">
-//            <h5 className="list-unstyled">{category.name}</h5>
-//             <select
-//               name={category.name}
-//               value={category.state[0]}
-//               onChange={(e) => category.state[1](e.target.value)}
-//             >
-//               <option value="">Select an option</option>
-//           {category.options.map((option) => (
-//                 <option
-//                   className="form-check-input"
-//                   type="radio"
-//                   name={category.name}
-//                   value={option}
-//                   checked={category.state[0] === option}
-//                 >
-//                 {option}
-//                 </option>
-//           ))}
-//           </select>
-//         </div>
-//       ))}
-//       </div>
-//       <div className="d-flex align-items-start">
 
-//         <button
-//             type="button"
-//             class="btn btn-dark"
-//             onClick={() => {
-//               handleClearFilter();
-//               handleFilterChange();
-//             }}
-//           >
-//             Apply
-//         </button>
-
-//         <button
-//             type="button"
-//             class="btn btn-dark"
-//             onClick={() => {
-//               handleClearFilter();
-//               handleFilterChange();
-//             }}
-//           >
-//             Clear
-//         </button>
-//       </div>
-//     </div>
-// )}
-//       <button className="filter__button" onClick={toggleFilter}>
-//         {isOpen ? "Close Filter" : "Open Filter"}
-//       </button>
-//     </>
 
 <div className="filter-container">
-      <button className="filter__button" onClick={toggleFilter}>
+      <button type="button" className="filter__button btn btn-dark" onClick={toggleFilter}>
         {isOpen ? "Close Filter" : "Open Filter"}
       </button>
 
       {isMobile && isOpen && (
-        <div className="filter-content">
+        <div className="mobile-filter-content">
           <h4 className="px-4">Categories</h4>
           <div className="filter-options">
             {categories.map((category) => (
@@ -173,28 +132,49 @@ export default function Filter({ onFilterChange }) {
               </div>
             ))}
           </div>
-          <div className="d-flex align-items-start">
+          <div className="d-flex align-items-start gap-2">
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => {
-                handleClearFilter();
-                handleFilterChange();
-              }}
+              onClick={handleClickApply}
             >
               Apply
             </button>
-
+            <Snackbar
+              open={applySnackbarOpen}
+              autoHideDuration={500} 
+              onClose={() => setApplySnackbarOpen(false)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'  }} 
+            >
+              <Alert
+                onClose={() => setApplySnackbarOpen(false)}
+                severity="success" 
+                sx={{ width: '100%' }}
+              >
+                Filter Applied!!
+              </Alert>
+            </Snackbar>
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => {
-                handleClearFilter();
-                handleFilterChange();
-              }}
+              onClick={handleClickClear}
             >
               Clear
             </button>
+            <Snackbar
+              open={clearSnackbarOpen}
+              autoHideDuration={500} 
+              onClose={() => setClearSnackbarOpen(false)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'  }} 
+            >
+              <Alert
+                onClose={() => setClearSnackbarOpen(false)}
+                severity="success" 
+                sx={{ width: '100%' }}
+              >
+                Filter Cleared!!
+              </Alert>
+            </Snackbar>
           </div>
         </div>
       )}
@@ -229,24 +209,46 @@ export default function Filter({ onFilterChange }) {
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => {
-                handleClearFilter();
-                handleFilterChange();
-              }}
+              onClick={handleClickApply}
             >
               Apply
             </button>
+            <Snackbar
+              open={applySnackbarOpen}
+              autoHideDuration={500} 
+              onClose={() => setApplySnackbarOpen(false)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'  }} 
+            >
+              <Alert
+                onClose={() => setApplySnackbarOpen(false)}
+                severity="success" 
+                sx={{ width: '100%' }}
+              >
+                Filter Applied!!
+              </Alert>
+            </Snackbar>
 
             <button
               type="button"
               className="btn btn-dark"
-              onClick={() => {
-                handleClearFilter();
-                handleFilterChange();
-              }}
+              onClick={handleClickClear}
             >
               Clear
             </button>
+            <Snackbar
+              open={clearSnackbarOpen}
+              autoHideDuration={500} 
+              onClose={() => setClearSnackbarOpen(false)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'  }} 
+            >
+              <Alert
+                onClose={() => setClearSnackbarOpen(false)}
+                severity="success" 
+                sx={{ width: '100%' }}
+              >
+                Filter Cleared!!
+              </Alert>
+            </Snackbar>
           </div>
         </div>
     </div>
