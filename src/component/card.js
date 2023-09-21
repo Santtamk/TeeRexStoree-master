@@ -10,11 +10,13 @@ import './card.css'
             <div className="card rounded shadow border-0 " style={{width: '15rem'}}>
                 <img className="img-thumbnail card-all-image" src={product.imageURL} alt={product.name}/>
                 <div className="card-body">
-                    <div>
+                    <div className="d-flex justify-content-between">
                         <h5 className="card-title">{product.name}</h5>
-                        <h6 className="card-title">{product.currency} {product.price}</h6>
+                        <h5 className="card-title">{product.currency} {product.price}</h5>
                     </div>
-                    <button className="btn btn-dark" onClick={() => handleClick(product)}>Add to cart</button>
+                    <div>
+                          <button type="button" className="btn btn-dark w-100" onClick={() => handleClick(product)}>Add to cart</button>
+                    </div>
                 </div>
             </div>
     )

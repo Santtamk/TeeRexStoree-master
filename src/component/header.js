@@ -2,10 +2,26 @@ import React from "react";
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import { Button } from "@mui/material";
 import "./header.css";
-
+import { useSnackbar } from "notistack";
 
 export default function Header({size, setShow}) {
 
+    const {enqueueSnackbar} = useSnackbar();
+
+
+    const handleClick = () => {
+        
+        if(size===0){
+        enqueueSnackbar("Cart is empty", {
+            variant: "warning",
+          });
+    }else{
+
+        setShow(false)
+    }
+        
+      };
+   
 
     return (
         <nav className="navbar navbar-light bg-light">
@@ -16,7 +32,7 @@ export default function Header({size, setShow}) {
                 </div>
 
                 <div className="nav navbar-nav navbar-right">
-                <Button variant="light" startIcon={<ShoppingCartSharpIcon />} onClick={() =>setShow(false)}> {size}</Button>
+                <Button variant="light" startIcon={<ShoppingCartSharpIcon />} onClick={handleClick}  > {size}</Button>
                 </div>
 
             </div>

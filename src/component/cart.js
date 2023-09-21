@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import './cart.css'
+import  Emptycart  from '.././asset/emptycart.svg.png'
 
 const Cart = ({ cart, setCart }) => {
   const [price, setPrice] = useState(0);
@@ -44,61 +45,17 @@ const Cart = ({ cart, setCart }) => {
     setCart(arr);
   };
 
-//   return (
-//     <article className="container">
-//       <h3 className="m-5">Shopping Cart</h3>
-//       <div className="row">
-//       {cart?.map((product) => (
-//         <div
-//           key={product.id}
-//           className=" col-md-12 mb-3"
-//           style={{ width: "8rem" }}
-//         >
-//     <div className="d-flex rounded shadow-sm border p-3">
-//           <img
-//             className="img-thumbnail"
-//             src={product.imageURL}
-//             alt={product.name}
-//           />
-//           <div className="d-flex flex-column justify-content-between ml-3">
-//             <div className="card-body">
-//               <h5 className="card-title">
-//                 {product.name}
-//               </h5>
-//               <h6 className="card-title">
-//                 {product.currency} {product.price}
-//               </h6>
-//             </div>
-//             <div className="d-flex justify-content-between">
-//               <button onClick={() => handleIncrement(product)}> + </button>
-//               <button> {product.quantity} </button>
-//               <button onClick={() => handleDecrement(product)}> - </button>
-//             </div>
-//             <div>
-//               <button
-//                 className="btn btn-danger mt-2"
-//                 onClick={() => handleDelete(product.id)}
-//               >
-//                 Delete
-//               </button>
-//             </div>
-//           </div>
-//           </div>
-//           </div>
-//       ))}
-//       </div>
-//       <div className="d-flex">
-//         <p>
-//           <b>Total price of the cart</b>
-//         </p>
-//         <span>INR {price}</span>
-//       </div>
-//     </article>
-//   );
-// };
 
 
 return (
+  <>
+  {cart.length === 0 ? (
+    // Render the empty cart image when the cart is empty
+    <div className="empty-cart d-flex justify-content-center flex-column" >
+      <img src={Emptycart} className="img-fluid img-thumbnail mx-auto d-block" alt="Empty Cart" />
+      <h3 className="text-center">Your cart is empty.</h3>
+    </div>
+  ) : (
   <div className="container mt-5 mb-5">
   <div className="d-flex justify-content-center row">
       <div className="col-md-8">
@@ -128,10 +85,12 @@ return (
           </div>
           ))}
                     <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">Total  :  {price}</div>
-          <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button className="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay(comming Soon)</button></div>
+          <div className="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button className="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay(coming soon)</button></div>
       </div>
   </div>
 </div>
+)}
+</>
     )
 }
 export default Cart;
